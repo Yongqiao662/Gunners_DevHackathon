@@ -1,13 +1,16 @@
-import React, { useState } from 'react';
-import { Truck, Store, Package, LeafyGreen, Wallet, QrCode, ChevronLeft, MoreHorizontal, Share, Search, Bell, Plus, Filter, ArrowUpRight, Eye, Signal, BatteryCharging, Wifi } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Truck, Store, Package, LeafyGreen, Wallet, QrCode, ChevronLeft, MoreHorizontal, Share, Search, Bell, Plus, Filter, ArrowUpRight, Eye, Signal, BatteryCharging, Wifi, Sprout } from 'lucide-react';
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [userAddress, setUserAddress] = useState(null);
   const [productData, setProductData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [showingProduct, setShowingProduct] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(null);
 
-  // Mock data for multiple products
+  // Mock data for multiple products. This must be defined inside the App component
+  // to be accessible to other functions and components within it.
   const mockProducts = [
     {
       id: 1,
@@ -47,17 +50,61 @@ const App = () => {
     }
   ];
 
-  const handleLogin = () => {
+  // Check for existing connection on component mount
+  useEffect(() => {
+    async function checkConnection() {
+      if (typeof window.ethereum !== 'undefined') {
+        try {
+          const accounts = await window.ethereum.request({ method: 'eth_accounts' });
+          if (accounts.length > 0) {
+            setUserAddress(accounts[0]);
+            setIsLoggedIn(true);
+          }
+        } catch (error) {
+          console.error("Error checking for existing connection:", error);
+        }
+      }
+    }
+    checkConnection();
+  }, []);
+
+  const handleLogin = async () => {
     setLoading(true);
-    setTimeout(() => {
-      setIsLoggedIn(true);
-      setLoading(false);
-    }, 2000);
+    setErrorMessage(null); // Clear previous errors
+    
+    // Check if Ethereum provider (e.g., MetaMask) is available
+    if (typeof window.ethereum !== 'undefined') {
+      try {
+        const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+        // If accounts are retrieved, the user is logged in
+        if (accounts.length > 0) {
+          setUserAddress(accounts[0]);
+          setIsLoggedIn(true);
+        }
+      } catch (error) {
+        console.error(error);
+        if (error.code === 4001) {
+          // User rejected the connection
+          setErrorMessage('Please connect to your wallet to continue.');
+        } else {
+          setErrorMessage('An error occurred. Please try again.');
+        }
+      }
+    } else {
+      setErrorMessage('No Ethereum wallet detected. Please install a wallet like MetaMask.');
+    }
+    setLoading(false);
   };
 
   const viewProduct = (product) => {
     setProductData(product);
     setShowingProduct(true);
+  };
+
+  // Helper to truncate wallet address for display
+  const truncateAddress = (address) => {
+    if (!address) return '';
+    return `${address.substring(0, 6)}...${address.substring(address.length - 4)}`;
   };
 
   const StatusBar = () => (
@@ -76,35 +123,37 @@ const App = () => {
     <div className="bg-gradient-to-br from-emerald-50 via-white to-teal-50 h-full flex flex-col">
       <StatusBar />
       {/* Hero Section */}
-      <div className="px-6 pt-12 pb-8 flex-1">
-        <div className="text-center mb-12">
-          <div className="w-20 h-20 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-2xl mx-auto mb-6 flex items-center justify-center shadow-lg">
-            <LeafyGreen className="w-10 h-10 text-white" />
+      <div className="px-6 pt-12 pb-8 flex-1 flex flex-col justify-between">
+        <div>
+          <div className="text-center mb-12">
+            <div className="w-20 h-20 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-2xl mx-auto mb-6 flex items-center justify-center shadow-lg">
+              <Sprout className="w-10 h-10 text-white" />
+            </div>
+            <h1 className="text-3xl font-bold text-gray-900 mb-3">FreshChain</h1>
+            <p className="text-gray-600 text-lg">Track your food from farm to table</p>
           </div>
-          <h1 className="text-3xl font-bold text-gray-900 mb-3">FreshChain</h1>
-          <p className="text-gray-600 text-lg">Track your food from farm to table</p>
-        </div>
-        {/* Features */}
-        <div className="space-y-4 mb-12">
-          <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
-            <div className="flex items-center space-x-4">
-              <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center">
-                <QrCode className="w-6 h-6 text-blue-600" />
-              </div>
-              <div>
-                <h3 className="font-semibold text-gray-900">Scan & Track</h3>
-                <p className="text-sm text-gray-600">Complete supply chain visibility</p>
+          {/* Features */}
+          <div className="space-y-4 mb-12">
+            <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+              <div className="flex items-center space-x-4">
+                <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center">
+                  <QrCode className="w-6 h-6 text-blue-600" />
+                </div>
+                <div>
+                  <h3 className="font-semibold text-gray-900">Scan & Track</h3>
+                  <p className="text-sm text-gray-600">Complete supply chain visibility</p>
+                </div>
               </div>
             </div>
-          </div>
-          <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
-            <div className="flex items-center space-x-4">
-              <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center">
-                <Wallet className="w-6 h-6 text-green-600" />
-              </div>
-              <div>
-                <h3 className="font-semibold text-gray-900">Blockchain Verified</h3>
-                <p className="text-sm text-gray-600">Tamper-proof transparency</p>
+            <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+              <div className="flex items-center space-x-4">
+                <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center">
+                  <Wallet className="w-6 h-6 text-green-600" />
+                </div>
+                <div>
+                  <h3 className="font-semibold text-gray-900">Blockchain Verified</h3>
+                  <p className="text-sm text-gray-600">Tamper-proof transparency</p>
+                </div>
               </div>
             </div>
           </div>
@@ -114,7 +163,7 @@ const App = () => {
           <button
             onClick={handleLogin}
             disabled={loading}
-            className="w-full bg-gradient-to-r from-emerald-500 to-teal-600 text-white py-4 rounded-2xl font-semibold text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200 disabled:opacity-70"
+            className="w-full bg-gradient-to-r from-emerald-500 to-teal-600 text-white py-4 rounded-2xl font-semibold text-lg shadow-lg hover:shadow-xl hover:from-emerald-600 hover:to-teal-700 transform hover:-translate-y-0.5 transition-all duration-200 disabled:opacity-70 disabled:transform-none"
           >
             {loading ? (
               <div className="flex items-center justify-center space-x-3">
@@ -125,6 +174,11 @@ const App = () => {
               'Connect Wallet'
             )}
           </button>
+          {errorMessage && (
+            <div className="p-4 bg-red-100 text-red-700 rounded-xl border border-red-200 text-sm text-center font-medium">
+              {errorMessage}
+            </div>
+          )}
           <div className="text-center">
             <p className="text-sm text-gray-500">
               Secure connection via MetaMask or Web3 wallet
@@ -148,7 +202,7 @@ const App = () => {
             <Bell className="w-5 h-5 text-gray-600" />
           </div>
           <div className="w-10 h-10 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-full flex items-center justify-center">
-            <span className="text-white font-semibold text-sm">JD</span>
+            <span className="text-white text-xs font-semibold">{truncateAddress(userAddress)}</span>
           </div>
         </div>
       </div>
