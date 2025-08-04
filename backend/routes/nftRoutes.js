@@ -12,7 +12,8 @@ router.get("/:id", async (req, res) => {
     const uri = await nftContract.tokenURI(tokenId);
     res.json({ tokenId, uri });
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    console.error("Error calling tokenURI():", err);
+    res.status(500).json({ error: err.message || String(err) || "Unknown error" });
   }
 });
 
