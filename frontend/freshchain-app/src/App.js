@@ -8,6 +8,7 @@ const App = () => {
   const [loading, setLoading] = useState(false);
   const [showingProduct, setShowingProduct] = useState(false);
   const [errorMessage, setErrorMessage] = useState(null);
+  const [searchTerm, setSearchTerm] = useState(''); // New state for search input
 
   // Mock data for multiple products. This must be defined inside the App component
   // to be accessible to other functions and components within it.
@@ -49,6 +50,12 @@ const App = () => {
       nftId: '0x3C4D5E6F'
     }
   ];
+
+  // Filter products based on the search term
+  const filteredProducts = mockProducts.filter(product =>
+    product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    product.origin.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   // Check for existing connection on component mount
   useEffect(() => {
@@ -99,6 +106,11 @@ const App = () => {
   const viewProduct = (product) => {
     setProductData(product);
     setShowingProduct(true);
+  };
+
+  // Handler for search input changes
+  const handleSearchChange = (e) => {
+    setSearchTerm(e.target.value);
   };
 
   // Helper to truncate wallet address for display
@@ -213,6 +225,8 @@ const App = () => {
           <input
             type="text"
             placeholder="Search products..."
+            value={searchTerm} // Controlled component value
+            onChange={handleSearchChange} // Event handler
             className="w-full pl-12 pr-4 py-3 bg-gray-50 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
           />
         </div>
@@ -255,7 +269,8 @@ const App = () => {
         <button className="text-emerald-600 font-medium text-sm">View All</button>
       </div>
       <div className="space-y-3">
-        {mockProducts.map((product, index) => (
+        {/* Now mapping over filteredProducts instead of mockProducts */}
+        {filteredProducts.map((product, index) => (
           <div
             key={product.id}
             onClick={() => viewProduct(product)}
@@ -428,3 +443,4 @@ const App = () => {
 };
 
 export default App;
+

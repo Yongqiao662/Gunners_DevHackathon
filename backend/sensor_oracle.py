@@ -14,44 +14,15 @@ WEB3_PROVIDER_URL = os.getenv("WEB3_PROVIDER_URL")
 CONTRACT_ADDRESS = os.getenv("CONTRACT_ADDRESS")
 ACCOUNT_ADDRESS = os.getenv("ACCOUNT_ADDRESS")
 
+# --- Connect to Blockchain ---
+w3 = Web3(Web3.HTTPProvider(os.getenv("WEB3_PROVIDER_URL")))
 # --- Smart Contract ABI ---
 # You will get this from the Solidity developer. For now, use a placeholder.
 # This ABI assumes your contract has an `updateFreshnessScore` function.
-ABI = json.loads('''
-[
-  {
-    "inputs": [
-      {
-        "internalType": "uint256",
-        "name": "nftId",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "newScore",
-        "type": "uint256"
-      }
-    ],
-    "name": "updateFreshnessScore",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  }
-]
-''')
+with open("abi.json", "r") as f:
+    ABI = json.load(f)
 
 # --- Connect to the blockchain ---
-try:
-    w3 = Web3(Web3.HTTPProvider(WEB3_PROVIDER_URL))
-    if not w3.is_connected():
-        raise Exception("Failed to connect to the blockchain.")
-    print("Connected to the blockchain.")
-except Exception as e:
-    print(f"Error: {e}")
-    exit()
-
-w3.eth.default_account = ACCOUNT_ADDRESS
-freshchain_contract = w3.eth.contract(address=Web3.to_checksum_address(CONTRACT_ADDRESS), abi=ABI)
 
 def simulate_and_update(nft_id):
     """Simulates a sensor reading and updates the freshness score on-chain if a breach occurs."""

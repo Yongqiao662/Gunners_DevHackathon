@@ -2,13 +2,13 @@ const express = require('express');
 const cors = require('cors');
 require('dotenv').config();
 
-const nftRoutes = require('./routes/nftRoutes');  // ✅ This is enough
+const nftRoutes = require('./routes/nftRoutes');  
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.use('/api/nft', nftRoutes);  // ✅ Access via /api/nft/:id
+app.use('/api/nft', nftRoutes);  
 
 app.get('/', (req, res) => {
   res.send('FreshChain Backend Running');
