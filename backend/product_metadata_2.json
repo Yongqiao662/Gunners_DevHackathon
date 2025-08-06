@@ -1,0 +1,39 @@
+{
+  "name": "Fresh Salmon",
+  "description": "Sustainably sourced salmon from Norwegian Fjords, chilled and tracked via FreshChain for optimal freshness.",
+  "image": "https://images.unsplash.com/photo-1599084993091-1cb5c0721cc6?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  "freshnessScore": 100,
+  "nftId": "2",
+  "attributes": [
+    { "trait_type": "Origin", "value": "Norway" },
+    { "trait_type": "Batch Number", "value": "SAL-2025-08-07" },
+    { "trait_type": "Product Type", "value": "Seafood" },
+    { "trait_type": "Optimal Temperature", "value": "0-4°C" }
+  ],
+  "timeline": [
+    {
+      "event": "Caught",
+      "location": "Norwegian Fjords",
+      "timestamp": "2025-07-25T02:00:00Z",
+      "icon": "FishingPole",
+      "completed": true,
+      "notes": "Wild-caught, immediately chilled."
+    },
+    {
+      "event": "Processed & Chilled",
+      "location": "Bergen Facility",
+      "timestamp": "2025-07-26T08:30:00Z",
+      "icon": "Snowflake",
+      "completed": true,
+      "notes": "Filleted and packed on board."
+    },
+    {
+      "event": "Shipped to Distributor",
+      "location": "International Waters",
+      "timestamp": "2025-07-28T02:45:00Z",
+      "icon": "Ship",
+      "completed": false,
+      "notes": "Air freight, temperature-controlled."
+    }
+  ]
+}

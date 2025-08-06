@@ -1,7 +1,7 @@
 {
   "name": "Organic Avocados Batch A",
   "description": "Premium organic avocados from California, tracked via FreshChain.",
-  "image": "https://placehold.co/600x400/00FF00/FFFFFF?text=Avocado",
+  "image": "https://images.unsplash.com/photo-1523049673857-eb18f1d7b578?q=80&w=1075&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   "freshnessScore": 100,
   "nftId": "1",
   "attributes": [

@@ -1,0 +1,39 @@
+{
+  "name": "Organic Blueberries",
+  "description": "Fresh, organic blueberries from Mexico, tracked via FreshChain for quality and origin.",
+  "image": "https://images.unsplash.com/photo-1597474561103-0773c378a1fb?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  "freshnessScore": 100,
+  "nftId": "3",
+  "attributes": [
+    { "trait_type": "Origin", "value": "Mexico" },
+    { "trait_type": "Batch Number", "value": "BLUE-2025-08-10" },
+    { "trait_type": "Product Type", "value": "Fruit" },
+    { "trait_type": "Optimal Temperature", "value": "0-4°C" }
+  ],
+  "timeline": [
+    {
+      "event": "Harvested",
+      "location": "Jalisco Farm",
+      "timestamp": "2024-07-30T08:15:00Z",
+      "icon": "LeafyGreen",
+      "completed": true,
+      "notes": "Picked at peak ripeness."
+    },
+    {
+      "event": "Washed",
+      "location": "Guadalajara Facility",
+      "timestamp": "2024-07-30T14:30:00Z",
+      "icon": "Faucet",
+      "completed": true,
+      "notes": "Cleaned and prepared."
+    },
+    {
+      "event": "Quality Check",
+      "location": "Packaging Center",
+      "timestamp": "2024-07-31T09:00:00Z",
+      "icon": "Package",
+      "completed": false,
+      "notes": "Inspected for quality."
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "name": "Organic Almonds",
+  "description": "Sustainably grown organic almonds from Spain, tracked for quality and freshness.",
+  "image": "https://plus.unsplash.com/premium_photo-1675237625910-e5d354c03987?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  "freshnessScore": 100,
+  "nftId": "5",
+  "attributes": [
+    { "trait_type": "Origin", "value": "Spain" },
+    { "trait_type": "Batch Number", "value": "ALM-2025-07-25" },
+    { "trait_type": "Product Type", "value": "Nut" },
+    { "trait_type": "Optimal Storage", "value": "Cool, Dry Place" }
+  ],
+  "timeline": [
+    {
+      "event": "Harvested",
+      "location": "Andalusia",
+      "timestamp": "2024-07-10T09:30:00Z",
+      "icon": "LeafyGreen",
+      "completed": true,
+      "notes": "Hand-picked from the orchards."
+    },
+    {
+      "event": "Roasted",
+      "location": "Processing Plant",
+      "timestamp": "2024-07-15T14:00:00Z",
+      "icon": "Fire",
+      "completed": true,
+      "notes": "Lightly roasted for flavor."
+    },
+    {
+      "event": "Packaged",
+      "location": "Madrid",
+      "timestamp": "2024-07-18T11:15:00Z",
+      "icon": "Package",
+      "completed": true,
+      "notes": "Sealed in protective bags."
+    }
+  ]
+}

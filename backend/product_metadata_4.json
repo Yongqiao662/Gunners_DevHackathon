@@ -1,0 +1,39 @@
+{
+  "name": "Grass-Fed Beef",
+  "description": "Premium grass-fed beef from Argentina, processed and tracked for quality and ethical sourcing.",
+  "image": "https://images.unsplash.com/photo-1690983330536-3b0089d07cf9?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  "freshnessScore": 100,
+  "nftId": "4",
+  "attributes": [
+    { "trait_type": "Origin", "value": "Argentina" },
+    { "trait_type": "Batch Number", "value": "GFB-2025-08-11" },
+    { "trait_type": "Product Type", "value": "Meat" },
+    { "trait_type": "Optimal Temperature", "value": "-2-2°C" }
+  ],
+  "timeline": [
+    {
+      "event": "Processed",
+      "location": "Buenos Aires",
+      "timestamp": "2024-07-20T07:00:00Z",
+      "icon": "Package",
+      "completed": true,
+      "notes": "Initial processing and cuts."
+    },
+    {
+      "event": "Frozen",
+      "location": "Storage Facility",
+      "timestamp": "2024-07-21T16:20:00Z",
+      "icon": "Snowflake",
+      "completed": true,
+      "notes": "Flash-frozen for preservation."
+    },
+    {
+      "event": "Shipped",
+      "location": "International",
+      "timestamp": "2024-07-28T22:45:00Z",
+      "icon": "Truck",
+      "completed": false,
+      "notes": "Transport via refrigerated container."
+    }
+  ]
+}
