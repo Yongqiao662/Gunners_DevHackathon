@@ -1,0 +1,34 @@
+{
+  "name": "Organic Avocados Batch A",
+  "description": "Premium organic avocados from California, tracked via FreshChain.",
+  "image": "https://placehold.co/600x400/00FF00/FFFFFF?text=Avocado",
+  "freshnessScore": 100,
+  "nftId": "1",
+  "attributes": [
+    { "trait_type": "Origin", "value": "California, USA" },
+    { "trait_type": "Batch Number", "value": "AVO-2025-08-06" }
+  ],
+  "timeline": [
+    {
+      "event": "Harvested",
+      "location": "Farm A, California",
+      "timestamp": "2025-08-06T10:00:00Z",
+      "icon": "LeafyGreen",
+      "completed": true
+    },
+    {
+      "event": "Transported to Packaging",
+      "location": "Processing Plant, CA",
+      "timestamp": "2025-08-06T14:30:00Z",
+      "icon": "Truck",
+      "completed": true
+    },
+    {
+      "event": "Packaged",
+      "location": "Packaging Facility, CA",
+      "timestamp": "2025-08-07T09:00:00Z",
+      "icon": "Package",
+      "completed": false
+    }
+  ]
+}
