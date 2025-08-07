@@ -1,7 +1,7 @@
 const ProductCard = ({ product, onClick }) => (
   <div 
     onClick={onClick}
-    className="bg-white rounded-2xl p-4 shadow-sm border border-gray-100 cursor-pointer hover:shadow-md transition-all duration-200"
+    className="bg-white/60 backdrop-blur-md rounded-2xl p-4 shadow-lg border border-emerald-100 cursor-pointer transform transition-all duration-200 hover:scale-105 hover:shadow-2xl hover:border-emerald-300"
     style={{ height: '120px' }} // Fixed height
   >
     <div className="flex items-center h-full space-x-4">
@@ -22,8 +22,11 @@ const ProductCard = ({ product, onClick }) => (
           <span className="text-xs text-gray-500">NFT: {product.nftId}</span>
           <div className="flex items-center space-x-1">
             <div className={`w-2 h-2 rounded-full ${
-              product.freshnessScore > 85 ? 'bg-green-500' :
-              product.freshnessScore > 70 ? 'bg-yellow-500' : 'bg-red-500'
+              product.freshnessScore > 85
+                ? 'bg-green-500 animate-pulse shadow-[0_0_8px_2px_rgba(16,185,129,0.5)]'
+                : product.freshnessScore > 70
+                  ? 'bg-yellow-500'
+                  : 'bg-red-500'
             }`}></div>
             <span className="text-xs font-medium text-gray-700">{product.freshnessScore}%</span>
           </div>

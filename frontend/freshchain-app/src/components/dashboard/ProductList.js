@@ -2,7 +2,7 @@ import ProductCard from './ProductCard';
 
 const ProductList = ({ products, onViewProduct }) => (
   <div className="px-6">
-    <div className="flex items-center justify-between mb-4">
+    <div className="flex items-center justify-between mb-2">
       <h3 className="text-lg font-bold text-gray-900">Recent Shipments</h3>
       <button className="text-emerald-600 font-medium text-sm">View All</button>
     </div>

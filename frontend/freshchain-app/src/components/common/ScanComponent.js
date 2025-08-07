@@ -18,7 +18,7 @@ const ScanComponent = ({ onScanSuccess, onBack }) => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center p-6 bg-white h-full relative">
+    <div className="flex flex-col items-center justify-center p-6 bg-white/60 backdrop-blur-md rounded-3xl shadow-xl border border-emerald-100 h-full relative">
       {/* Go Back Button */}
       {onBack && (
         <button
@@ -30,7 +30,7 @@ const ScanComponent = ({ onScanSuccess, onBack }) => {
       )}
 
       <h3 className="text-2xl font-bold text-gray-800 mb-6 mt-4">Scan Product</h3>
-      <div className="w-64 h-64 bg-gray-200 rounded-lg flex items-center justify-center text-gray-500 text-center mb-6 shadow-inner">
+      <div className="w-64 h-64 bg-gradient-to-br from-emerald-100 via-white to-teal-100 rounded-2xl flex items-center justify-center text-gray-500 text-center mb-6 shadow-lg border-2 border-emerald-200 animate-pulse-slow">
         <p>
           [Camera Feed / Scanner UI Placeholder]
           <br />
@@ -46,7 +46,7 @@ const ScanComponent = ({ onScanSuccess, onBack }) => {
           onChange={(e) => setManualCode(e.target.value)}
         />
         <button
-          className="w-full bg-emerald-600 text-white py-2 rounded-lg font-semibold hover:bg-emerald-700 transition-colors"
+          className="w-full bg-gradient-to-r from-emerald-500 to-teal-500 text-white py-3 rounded-xl font-bold shadow hover:from-emerald-600 hover:to-teal-600 transition-all text-lg tracking-wide uppercase"
           onClick={handleManualScan}
         >
           Simulate Scan

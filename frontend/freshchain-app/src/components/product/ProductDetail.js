@@ -210,8 +210,8 @@ const ProductDetail = ({ product, userAddress, onBack, onFreshnessScoreUpdate })
   return (
     <div className="flex flex-col h-full bg-white rounded-3xl overflow-hidden">
       {/* Header - Changed to grey */}
-      <div className="bg-gray-600 text-white p-4 flex items-center justify-between">
-        <button onClick={onBack} className="text-white text-xl font-bold">
+      <div className="bg-gradient-to-br from-emerald-50 via-teal-50 to-green-50 text-black p-4 flex items-center justify-between">
+        <button onClick={onBack} className="text-black text-xl font-bold">
           &larr;
         </button>
         <h2 className="text-xl font-bold">Product Details</h2>

@@ -27,7 +27,7 @@ const WalletButton = ({ address, onClick, loading, className, fullWidth }) => {
           <span>Connecting...</span>
         </div>
       ) : (
-        'Connect Wallet'
+        <span className="font-extrabold text-2xl text-white drop-shadow-lg tracking-wide uppercase" style={{textShadow: '0 2px 8px #134e4a, 0 1px 0 #000'}}>Connect Wallet</span>
       )}
     </button>
   );

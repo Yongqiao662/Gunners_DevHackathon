@@ -11,16 +11,16 @@ const LoginPage = ({ onConnect, loading, error }) => {
         <div>
           {/* Hero Section */}
           <div className="text-center mb-12">
-            <div className="w-20 h-20 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-2xl mx-auto mb-6 flex items-center justify-center shadow-lg">
-              <Sprout className="w-10 h-10 text-white" />
+            <div className="w-24 h-24 bg-white/30 backdrop-blur-md border-2 border-emerald-200 rounded-3xl mx-auto mb-6 flex items-center justify-center shadow-2xl transition-all duration-300">
+              <span className="text-white text-6xl animate-bounce drop-shadow-lg" style={{ filter: 'drop-shadow(0 2px 8px #059669)' }}>🦊</span>
             </div>
-            <h1 className="text-3xl font-bold text-gray-900 mb-3">FreshChain</h1>
-            <p className="text-gray-600 text-lg">Track your food from farm to table</p>
+            <h1 className="text-4xl font-extrabold text-gray-900 mb-3 tracking-tight drop-shadow-sm">FreshChain</h1>
+            <p className="text-gray-700 text-lg font-medium">Track your food from farm to table</p>
           </div>
 
           {/* Features Grid */}
           <div className="space-y-4 mb-12">
-            <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+            <div className="bg-white/60 backdrop-blur-md rounded-2xl p-6 shadow-lg border border-emerald-100">
               <div className="flex items-center space-x-4">
                 <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center">
                   <QrCode className="w-6 h-6 text-blue-600" />
@@ -32,7 +32,7 @@ const LoginPage = ({ onConnect, loading, error }) => {
               </div>
             </div>
 
-            <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+            <div className="bg-white/60 backdrop-blur-md rounded-2xl p-6 shadow-lg border border-emerald-100">
               <div className="flex items-center space-x-4">
                 <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center">
                   <Wallet className="w-6 h-6 text-green-600" />
