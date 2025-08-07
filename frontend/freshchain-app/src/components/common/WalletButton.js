@@ -1,11 +1,17 @@
-const WalletButton = ({ address, truncateAddress, onClick, loading, className, fullWidth }) => {
+const WalletButton = ({ address, onClick, loading, className, fullWidth }) => {
   if (address) {
     return (
-      <div className={`${className} bg-gradient-to-br from-emerald-500 to-teal-600 rounded-full flex items-center justify-center`}>
-        <span className="text-white text-xs font-semibold">
-          {truncateAddress(address)}
+      <button
+        type="button"
+        onClick={onClick}
+        className={`w-10 h-10 rounded-full bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center cursor-pointer shadow-lg hover:shadow-xl transition ${className}`}
+        style={{ minWidth: '40px', minHeight: '40px' }}
+        aria-label="Wallet"
+      >
+        <span className="text-white text-lg">
+          🦊
         </span>
-      </div>
+      </button>
     );
   }
 

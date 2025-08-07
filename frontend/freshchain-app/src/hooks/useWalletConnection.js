@@ -74,6 +74,15 @@ const useWalletConnection = () => {
     }
   };
 
+  const disconnectWallet = () => {
+    setState({
+      isLoggedIn: false,
+      userAddress: null,
+      error: null,
+      loading: false,
+    });
+  };
+
   useEffect(() => {
     checkConnection();
     
@@ -94,6 +103,7 @@ const useWalletConnection = () => {
   return {
     ...state,
     connectWallet,
+    disconnectWallet,
     truncateAddress, // Added the missing function
   };
 };

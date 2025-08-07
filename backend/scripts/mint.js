@@ -20,7 +20,7 @@ async function main() {
   // YOU WILL CHANGE THESE VALUES FOR EACH NFT YOU MINT!
 
   // Example for Product ID 1:
-  //let tokenURI = "https://gateway.pinata.cloud/ipfs/bafkreib2nmscyioljzckmjhs4gmrvc4gwoibdiuglr2o6fbk2omnn5syf4"; // <-- REPLACE WITH ACTUAL CID FROM PINATA
+  //let tokenURI = "https://gateway.pinata.cloud/ipfs/bafkreibz5kfy2hei7rheucrp4qgrs6pnwxsfibvrub25cgnuddlcjmykdq"; // <-- REPLACE WITH ACTUAL CID FROM PINATA
   //let productName = "Organic Avocados";
   //let origin = "California, USA";
   //let initialLocation = "Avocado Grove";
@@ -28,14 +28,14 @@ async function main() {
   
 
   // Example for Product ID 2 (uncomment and change values to mint a second NFT):
-   //let tokenURI = "https://gateway.pinata.cloud/ipfs/bafkreicxb5idwf7puws2v4nuaea7ssmmkad7372rghrenxcq5ezejpkxzq"; // <-- REPLACE WITH ACTUAL CID FROM PINATA
-  // let productName = "Fresh Salmon";
+   //let tokenURI = "https://gateway.pinata.cloud/ipfs/bafkreigxfumfn6uu4ggaq5rewx5zm4ekpt6jxqilesbn3m32ty4gkz57xi"; // <-- REPLACE WITH ACTUAL CID FROM PINATA
+   //let productName = "Fresh Salmon";
    //let origin = "Norway";
-  // let initialLocation = "Norwegian Fjords";
+   //let initialLocation = "Norwegian Fjords";
 
    //let tokenURI = "https://gateway.pinata.cloud/ipfs/bafkreifuyvz3czw5p4l7azlh6fvwzgbzztuspr7ig4wqrdjup2nreegb2y"; // <-- REPLACE WITH ACTUAL CID FROM PINATA
    //let productName = "Organic Blueberries";
-  // let origin = "Mexico";
+   //let origin = "Mexico";
    //let initialLocation = "Norwegian Fjords";
 
    //let tokenURI = "https://gateway.pinata.cloud/ipfs/bafkreibvfqv6pbv3qqqjjje76p3c7q5tuzok3vpe3jr75gcujeoljdooga"; // <-- REPLACE WITH ACTUAL CID FROM PINATA

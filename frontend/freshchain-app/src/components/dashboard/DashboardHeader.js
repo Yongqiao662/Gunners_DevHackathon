@@ -1,9 +1,12 @@
 import { Bell, Filter } from 'lucide-react';
+import { useState } from 'react';
 import Search from '../common/Search';
 import WalletButton from '../common/WalletButton';
 import truncateAddress from '../../utils/truncateAddress'; // Correct import path
 
-const DashboardHeader = ({ userAddress, onSearch }) => {
+const DashboardHeader = ({ userAddress, onSearch, disconnectWallet }) => {
+  const [showDisconnect, setShowDisconnect] = useState(false);
+
   return (
     <div className="bg-white px-6 py-6 border-b border-gray-100">
       <div className="flex items-center justify-between mb-6">
@@ -17,11 +20,25 @@ const DashboardHeader = ({ userAddress, onSearch }) => {
             <Bell className="w-5 h-5 text-gray-600" />
           </div>
           
-          <WalletButton 
-            address={userAddress}
-            truncateAddress={truncateAddress}
-            className="w-10 h-10"
-          />
+          <div className="relative">
+            <WalletButton 
+              address={userAddress}
+              truncateAddress={truncateAddress}
+              className="w-10 h-10"
+              onClick={() => setShowDisconnect((prev) => !prev)}
+            />
+            {showDisconnect && (
+              <button
+                onClick={() => {
+                  disconnectWallet();
+                  setShowDisconnect(false);
+                }}
+                className="absolute right-0 mt-2 px-3 py-1 bg-red-100 text-red-600 rounded-lg text-xs font-semibold shadow-lg hover:bg-red-200 transition z-10"
+              >
+                Disconnect
+              </button>
+            )}
+          </div>
         </div>
       </div>
       

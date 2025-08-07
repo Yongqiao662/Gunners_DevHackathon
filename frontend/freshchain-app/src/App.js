@@ -3,8 +3,8 @@ import useWalletConnection from './hooks/useWalletConnection';
 import LoginPage from './components/login/LoginPage';
 import Dashboard from './components/dashboard/Dashboard';
 import ProductDetail from './components/product/ProductDetail';
-import ScanComponent from './components/common/ScanComponent'; // Import the scanner component
-import { mockProducts } from './utils/mockProducts'; // Keep mockProducts for filtering dashboard, but not for scan
+import ScanComponent from './components/common/ScanComponent';
+import { mockProducts } from './utils/mockProducts';
 
 const App = () => {
   const {
@@ -13,18 +13,20 @@ const App = () => {
     error: walletError,
     loading: walletLoading,
     connectWallet,
+    disconnectWallet, // <-- Use only this one!
     truncateAddress,
   } = useWalletConnection();
   
   const [productData, setProductData] = useState(null);
   const [showingProduct, setShowingProduct] = useState(false);
-  const [isScanning, setIsScanning] = useState(false); // State for the scan mode
+  const [isScanning, setIsScanning] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
 
   // Console logs for debugging the app's state flow
   console.log('isLoggedIn:', isLoggedIn);
   console.log('isScanning:', isScanning);
   console.log('showingProduct:', showingProduct);
+  console.log('User Address:', userAddress); // New log for debugging the address prop
 
   // Filter products for the Dashboard view (still using mockProducts here)
   const filteredProducts = mockProducts.filter(product =>
@@ -43,8 +45,8 @@ const App = () => {
     setIsScanning(false); // Stop scanning and hide the scanner
 
     try {
-      // 🚀 This is the real API call to your backend! 🚀
-      // It will fetch product details based on the scanned 'code' (NFT ID).
+      // 🚨 IMPORTANT: Replace 'http://localhost:5000/api/product/' with your actual backend API endpoint 🚨
+      // This endpoint should be set up to receive the 'code' (NFT ID) and return product data.
       const response = await fetch(`http://localhost:5000/api/product/${code}`);
 
       if (!response.ok) {
@@ -67,7 +69,7 @@ const App = () => {
       console.error('Error during product scan and fetch:', error);
       // Use a more user-friendly message for the alert
       alert('Could not retrieve product details. Please try scanning again or check your network. Details: ' + error.message);
-      setIsScanning(true); // Return to the scanner on error if there's an error
+      setIsScanning(true); // Keep the scanner active or return to it on error
     }
   };
 
@@ -83,11 +85,15 @@ const App = () => {
           />
         ) : isScanning ? (
           // 2. Scanning Mode: Shown if user clicked 'Scan Product'
-          <ScanComponent onScanSuccess={handleScanSuccess} />
+          <ScanComponent 
+            onScanSuccess={handleScanSuccess} 
+            onBack={() => setIsScanning(false)} // <-- Add this prop!
+          />
         ) : showingProduct ? (
           // 3. Product Detail Page: Shown if a product is selected/scanned
           <ProductDetail 
             product={productData} 
+            userAddress={userAddress} // <-- NEW: Passing the user's wallet address
             onBack={() => setShowingProduct(false)}
           />
         ) : (
@@ -100,12 +106,12 @@ const App = () => {
                 products={filteredProducts}
                 onSearch={setSearchTerm}
                 onViewProduct={viewProduct}
+                disconnectWallet={disconnectWallet} // <-- Pass it here!
               />
             </div>
-            {/* Removed debugging border and background from this div */}
-            <div className="p-4"> 
+            <div className="p-4">
               <button
-                className="w-full bg-emerald-600 text-white py-2 rounded-lg font-semibold mt-1"
+                className="w-full bg-emerald-600 text-white py-2 rounded-lg font-semibold mt-4"
                 onClick={() => setIsScanning(true)} // Transition to scanning mode
               >
                 Scan Product
