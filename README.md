@@ -10,14 +10,14 @@ Brief description of your solution:
 
 ## 🛠️ Tech Stack
 - Frontend: React.js
-- Backend: Flask / Node.js
-- Database: Firebase / MongoDB
-- Blockchain API: (Optional) Public testnet or mock data
+- Backend: Express / Node.js
+- Database: Pinata
+- Blockchain API: Testnet
 
 ---
 
 ## 👥 Team Members
-- Name 1 – Role
+- Loh Yong Qiao - Frontend/Backend
 - Name 2 – Role
 - Name 3 – Role
 
