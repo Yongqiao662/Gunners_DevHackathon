@@ -1,18 +1,16 @@
 // backend/app.js
 const express = require('express');
-const cors = require('cors'); // Import cors for cross-origin requests
+const cors = require('cors'); 
 const app = express();
-const port = 5000; // The port your frontend is trying to connect to
+const port = 5000; 
 
 // Middleware to enable CORS (Cross-Origin Resource Sharing)
-// This is essential for your frontend (running on a different port/origin)
-// to be able to make requests to your backend.
 app.use(cors());
 
 // Middleware to parse JSON request bodies
 app.use(express.json());
 
-// Import your routes (we'll create this next)
+// Import your routes 
 const nftRoutes = require('./routes/nftRoutes');
 
 // Use your product routes

@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: MIT
-// backend/scripts/mint.js
+
 const { ethers } = require("hardhat");
 
 async function main() {
-  // Get the signer (the first account from your Hardhat node)
+
   const [deployer] = await ethers.getSigners();
   console.log("Using account:", deployer.address);
 
@@ -38,14 +38,14 @@ async function main() {
    //let origin = "Argentina";
    //let initialLocation = "Norwegian Fjords";
 
-   let tokenURI = "https://gateway.pinata.cloud/ipfs/bafkreiah2pgrkhdr5xbkukiwnks5zpx3itm36ncbbwb6ex5jxoopr6upii"; // <-- REPLACE WITH ACTUAL CID FROM PINATA
-   let productName = "Organic Almonds";
-   let origin = "Spain";
-   let initialLocation = "Norwegian Fjords";
+   //let tokenURI = "https://gateway.pinata.cloud/ipfs/bafkreiah2pgrkhdr5xbkukiwnks5zpx3itm36ncbbwb6ex5jxoopr6upii"; // <-- REPLACE WITH ACTUAL CID FROM PINATA
+   //let productName = "Organic Almonds";
+   //let origin = "Spain";
+   //let initialLocation = "Norwegian Fjords";
 
   console.log(`Minting NFT for "${productName}"...`);
 
-  // Call the createProductBatch function
+
   const tx = await nftContract.createProductBatch(
     productName,
     origin,
@@ -55,7 +55,7 @@ async function main() {
 
   const receipt = await tx.wait();
   
-  // Find the 'ProductCreated' event in the transaction logs
+ 
   const productCreatedEvent = receipt.logs.find(log => 
     nftContract.interface.parseLog(log)?.name === 'ProductCreated'
   );
@@ -65,7 +65,7 @@ async function main() {
   console.log(`NFT minted successfully! Numeric Token ID: ${mintedTokenId}`);
   console.log(`Transaction Hash: ${tx.hash}`);
 
-  // Now, call the new getter function to get the formatted ID
+  
   const formattedId = await nftContract.getFormattedTokenId(mintedTokenId);
   console.log(`Formatted Token ID: ${formattedId}`);
 }

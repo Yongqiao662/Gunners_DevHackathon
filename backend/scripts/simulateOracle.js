@@ -1,6 +1,6 @@
 // backend/scripts/simulateOracle.js
 const { ethers } = require("hardhat");
-require("dotenv").config(); // Load .env from current directory
+require("dotenv").config(); 
 
 async function main() {
   const contractAddress = process.env.CONTRACT_ADDRESS; 
@@ -31,16 +31,16 @@ async function main() {
   }
 
   // --- Mock Sensor Data Simulation for Multiple NFTs ---
-  // Define the NFT IDs you want to update
-  const tokenIdsToUpdate = [1, 2, 3, 4, 5]; // <--- THIS IS THE KEY CHANGE
+
+  const tokenIdsToUpdate = [1, 2, 3, 4, 5]; E
 
   // Maintain state for each token's sensor data
   const sensorDataState = {};
   tokenIdsToUpdate.forEach(id => {
     sensorDataState[id] = {
-      temperature: Math.random() * 10 + 5, // Random initial temp between 5 and 15
-      humidity: Math.random() * 10 + 85,  // Random initial humidity between 85 and 95
-      locationIndex: Math.floor(Math.random() * 4) // Random initial location index
+      temperature: Math.random() * 10 + 5, 
+      humidity: Math.random() * 10 + 85,  
+      locationIndex: Math.floor(Math.random() * 4) 
     };
   });
 
@@ -85,7 +85,7 @@ async function main() {
         console.error(`❌ Error sending sensor update for NFT ${tokenId}:`, error.message);
         if (error.message.includes("Token does not exist")) {
           console.error(`Stopping oracle for NFT ${tokenId}: Token does not exist.`);
-          // You might want to remove this tokenId from tokenIdsToUpdate if it's truly gone
+          
         }
       }
     }

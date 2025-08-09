@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
 const ProductDetail = ({ product, userAddress, onBack, onFreshnessScoreUpdate }) => {
-  // 🐛 DEBUG LOG: This will fire every time the component renders. 
-  // If you don't see this, the component is not being loaded.
+
   console.log('*** PRODUCT DETAIL COMPONENT IS LOADING ***');
   
   const [onChainProductDetails, setOnChainProductDetails] = useState(null);

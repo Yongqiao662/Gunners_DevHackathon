@@ -51,13 +51,11 @@ const App = () => {
         } catch (error) {
             console.error('Error during product scan and fetch:', error);
             alert('Could not retrieve product details. Please try scanning again or check your network. Details: ' + error.message);
-            // Optional: uncomment the line below if you want the scanner to re-open on error
-            // setIsScanning(true);
+         
         }
     };
 
-    // ❌ The 'handleSearchById' function has been removed as it's no longer needed.
-    // The NFTSearchComponent now handles all of its own search and display logic.
+    
 
     const renderContent = () => {
         if (!isLoggedIn) {

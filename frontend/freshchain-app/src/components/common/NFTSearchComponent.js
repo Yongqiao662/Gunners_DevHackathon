@@ -24,7 +24,7 @@ const SearchInput = ({ onSearch, isLoading }) => (
 );
 
 
-const NFTSearchComponent = ({ onBack }) => { // ✅ Correctly receives onBack prop
+const NFTSearchComponent = ({ onBack }) => { 
     const [searchQuery, setSearchQuery] = useState('');
     const [searchResult, setSearchResult] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
@@ -126,7 +126,7 @@ const NFTSearchComponent = ({ onBack }) => { // ✅ Correctly receives onBack pr
         setIsBuying(true);
         setPurchaseStatus(null);
         const newOwnerAddress = '0xYourNewBuyerWalletAddress...';
-        const transactionSucceeded = Math.random() > 0.1; // 90% success chance
+        const transactionSucceeded = Math.random() > 0.1; 
 
         try {
             await new Promise(resolve => setTimeout(resolve, 2000));
