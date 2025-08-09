@@ -94,9 +94,9 @@ QR code is generated for each batch.
 Consumers scan the QR code to view verified product history.
 
 ## 📌 Future Improvements
-IoT sensor integration for automatic freshness updates.
-Mobile app for offline QR scanning.
-Multi-language support for global markets.
+- IoT sensor integration for automatic freshness updates.
+- Mobile app for offline QR scanning.
+- Multi-language support for global markets.
 
 
  
