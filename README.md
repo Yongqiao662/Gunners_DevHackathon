@@ -55,9 +55,49 @@ Clean UI for retailers, suppliers, and consumers.
    cd freshchain
 
 2. Install dependencies
-   Backend
    ```bash
    cd backend
    npm install
+
+   cd frontend
+   npm install
+
+3. Conigure Environment varaiables
+   :Create a .env file in both backend/ and frontend/:
+    ```bash
+   MONGO_URI=your_mongodb_url
+   PORT=5000
+   PRIVATE_KEY=your_blockchain_private_key
+   INFURA_URL=your_infura_rpc_url
    
+   # Frontend .env
+   REACT_APP_API_URL=http://localhost:5000
+
+ 4. Deploy the smart contract
+    ```bash
+    cd smart-contracts
+    npx hardhat compile
+    npx hardhat run scripts/deploy.js --network sepolia
+
+ 5. Start the app
+    ```bash
+    cd backend
+    node app.js
+
+    cd frontend
+    node app.js
+
+## 📲 Usage
+Admin logs product details via the dashboard.
+Blockchain transaction is created for each timeline milestone.
+QR code is generated for each batch.
+Consumers scan the QR code to view verified product history.
+
+## 📌 Future Improvements
+IoT sensor integration for automatic freshness updates.
+Mobile app for offline QR scanning.
+Multi-language support for global markets.
+
+
+ 
 
