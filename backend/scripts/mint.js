@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: MIT
 // backend/scripts/mint.js
 const { ethers } = require("hardhat");
 
@@ -6,20 +7,14 @@ async function main() {
   const [deployer] = await ethers.getSigners();
   console.log("Using account:", deployer.address);
 
-  // --- IMPORTANT: Replace 'YOUR_DEPLOYED_CONTRACT_ADDRESS_HERE' with your actual deployed address ---
-  // This is the address you copied from the 'deploy.js' script output (e.g., 0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0)
-  const contractAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3"; // <--- PASTE YOUR DEPLOYED CONTRACT ADDRESS HERE
+  // Replace with your contract's address after deployment
+  const contractAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
   
-  // Get the ContractFactory to access the ABI (interface) of your contract
   const FreshChainNFTFactory = await ethers.getContractFactory("FreshChainNFT");
   
-  // Create the contract instance directly using the address, ABI, and signer
   const nftContract = new ethers.Contract(contractAddress, FreshChainNFTFactory.interface, deployer);
 
-  // --- Define your NFT Metadata URI and Product Details for Minting ---
-  // YOU WILL CHANGE THESE VALUES FOR EACH NFT YOU MINT!
-
-  // Example for Product ID 1:
+ //  for Product ID 1:
   //let tokenURI = "https://gateway.pinata.cloud/ipfs/bafkreibz5kfy2hei7rheucrp4qgrs6pnwxsfibvrub25cgnuddlcjmykdq"; // <-- REPLACE WITH ACTUAL CID FROM PINATA
   //let productName = "Organic Avocados";
   //let origin = "California, USA";
@@ -27,7 +22,7 @@ async function main() {
 
   
 
-  // Example for Product ID 2 (uncomment and change values to mint a second NFT):
+  //  for Product ID 2 
    //let tokenURI = "https://gateway.pinata.cloud/ipfs/bafkreigxfumfn6uu4ggaq5rewx5zm4ekpt6jxqilesbn3m32ty4gkz57xi"; // <-- REPLACE WITH ACTUAL CID FROM PINATA
    //let productName = "Fresh Salmon";
    //let origin = "Norway";
@@ -47,11 +42,10 @@ async function main() {
    let productName = "Organic Almonds";
    let origin = "Spain";
    let initialLocation = "Norwegian Fjords";
-  
-
 
   console.log(`Minting NFT for "${productName}"...`);
 
+  // Call the createProductBatch function
   const tx = await nftContract.createProductBatch(
     productName,
     origin,
@@ -61,16 +55,19 @@ async function main() {
 
   const receipt = await tx.wait();
   
+  // Find the 'ProductCreated' event in the transaction logs
   const productCreatedEvent = receipt.logs.find(log => 
     nftContract.interface.parseLog(log)?.name === 'ProductCreated'
   );
   
   const mintedTokenId = productCreatedEvent ? productCreatedEvent.args.tokenId.toString() : 'N/A';
 
-  console.log(`NFT minted successfully! Token ID: ${mintedTokenId}`);
+  console.log(`NFT minted successfully! Numeric Token ID: ${mintedTokenId}`);
   console.log(`Transaction Hash: ${tx.hash}`);
-  console.log(`Token URI set to: ${tokenURI}`);
-  console.log(`Check transaction on Hardhat Network: http://localhost:8545/tx/${tx.hash}`);
+
+  // Now, call the new getter function to get the formatted ID
+  const formattedId = await nftContract.getFormattedTokenId(mintedTokenId);
+  console.log(`Formatted Token ID: ${formattedId}`);
 }
 
 main()

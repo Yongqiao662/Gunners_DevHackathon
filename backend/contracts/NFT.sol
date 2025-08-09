@@ -3,8 +3,11 @@ pragma solidity ^0.8.19;
 
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts/utils/Strings.sol";
 
 contract FreshChainNFT is ERC721URIStorage, Ownable {
+    using Strings for uint256;
+
     uint256 private _tokenIdCounter;
     
     struct ProductBatch {
@@ -73,6 +76,43 @@ contract FreshChainNFT is ERC721URIStorage, Ownable {
         return newTokenId;
     }
     
+    /**
+     * @dev Returns the token ID as a formatted string with an "FC-" prefix and leading zeros.
+     * @param tokenId The numeric token ID.
+     */
+    function getFormattedTokenId(uint256 tokenId) public view returns (string memory) {
+        require(tokenExists(tokenId), "Token does not exist");
+        string memory paddedId = _padWithZeros(tokenId, 6);
+        return string(abi.encodePacked("FC-", paddedId));
+    }
+    
+    /**
+     * @dev Internal function to pad a uint256 with leading zeros to a fixed length.
+     * @param number The number to pad.
+     * @param length The target length of the string.
+     */
+    function _padWithZeros(uint256 number, uint256 length) internal pure returns (string memory) {
+        bytes memory tempBytes = new bytes(length);
+        uint256 j = length;
+        uint256 temp = number;
+
+        if (temp == 0) {
+            tempBytes[--j] = '0';
+        } else {
+            while (temp > 0 && j > 0) {
+                tempBytes[--j] = bytes1(uint8(48 + temp % 10));
+                temp /= 10;
+            }
+        }
+        
+        // Fill remaining space with leading zeros
+        while (j > 0) {
+            tempBytes[--j] = '0';
+        }
+        
+        return string(tempBytes);
+    }
+
     /**
      * @dev Update sensor data for a product batch
      */
