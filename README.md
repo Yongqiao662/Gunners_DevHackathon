@@ -245,9 +245,7 @@ For detailed API documentation, see API.md
 
 Smart Contract Deployment (Testnet)
 
-Deploy to Polygon testnet
-
-npx hardhat run scripts/deploy.js --network polygon
+npx hardhat run scripts/deploy.js --network localhost
 
 
 
@@ -325,21 +323,9 @@ Phase 4 (Q4 2024)
 📋 Public blockchain deployment
 
 
-## 📊 Statistics
-
-Products Tracked: 10,000+
-Verified Transactions: 50,000+
-Active Users: 1,200+
-Supply Chain Partners: 150+
 
 
-## 🙏 Acknowledgments
 
-Thanks to the Polygon team for blockchain infrastructure
-Pinata for IPFS storage solutions
-The open-source community for various libraries and tools
-Our beta testers and early adopters
-Most Importantly - DevMatch Organizer Team
 
 
 
