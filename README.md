@@ -51,7 +51,7 @@ Clean UI for retailers, suppliers, and consumers.
 ## ⚙️ How to Run
 1. Clone this repository:
    ```bash
-   git clone https://github.com/yourusername/bga-hackathon-project.git
+   git clone https://github.com/Yongqiao662/Gunners_DevHackathon.git
    cd freshchain
 
 2. Install dependencies
