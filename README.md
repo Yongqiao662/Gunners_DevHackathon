@@ -2,9 +2,33 @@
 Blockchain for Good Alliance (BGA)
 # 🌍 Project Name – BGA Hackathon 2025
 
+##FreshChain-Blockchain-Powered Food Supply Chain Tracker
+FreshChain is a blockchain-enabled supply chain application that ensures end-to-end transparency for agricultural products. It tracks each stage from harvest to retail, storing key milestones securely on the blockchain for verification and trust.
+
 ## 🚀 Overview
-Brief description of your solution:  
-> Example: A transparent blockchain-based donation tracker that ensures every contribution reaches its destination.
+The global food supply chain often faces issues of fraud, lack of transparency, and data tampering.
+FreshChain solves this by combining QR code scanning, blockchain verification, and live chain data tracking, ensuring every step of the product’s journey is visible, traceable, and immutable.
+With FreshChain, consumers, retailers, and suppliers can verify authenticity, freshness, and origin with a single scan.
+
+## 🚀 Key Features
+Product Timeline Tracking
+Each product’s journey is logged on the blockchain with the following milestones:
+Harvested – Capture the harvest date and origin farm details.
+Transported – Log transportation events, including handler and location.
+Quality Check – Record inspection details and freshness score.
+Retail Ready – Update product readiness for retail shelves.
+Live In-Chain Data – Real-time updates as products move through the chain.
+Scan & Track – Users scan QR codes to view full history.
+Blockchain Verified – Immutable records ensure data can’t be altered.
+
+## Blockchain Integration
+Uses NFT smart contracts to represent product batches.
+Each update is stored on-chain with a unique transaction hash.
+QR codes link directly to blockchain-verified product data.
+
+## User-Friendly Interface
+Mobile and web support for scanning and viewing product timelines.
+Clean UI for retailers, suppliers, and consumers.
 
 ---
 
@@ -18,8 +42,9 @@ Brief description of your solution:
 
 ## 👥 Team Members
 - Loh Yong Qiao - Frontend/Backend
-- Name 2 – Role
-- Name 3 – Role
+- Tai Jin Wei - Backend
+- Hong Tze Loon - Backened/Presenter
+- Ivan Ooi Jian Chao - Frontend/Presenter
 
 ---
 
@@ -27,3 +52,4 @@ Brief description of your solution:
 1. Clone this repository:
    ```bash
    git clone https://github.com/yourusername/bga-hackathon-project.git
+   cd freshchain
