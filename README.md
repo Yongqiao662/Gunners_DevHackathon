@@ -53,3 +53,11 @@ Clean UI for retailers, suppliers, and consumers.
    ```bash
    git clone https://github.com/yourusername/bga-hackathon-project.git
    cd freshchain
+
+2. Install dependencies
+   Backend
+   ```bash
+   cd backend
+   npm install
+   
+
